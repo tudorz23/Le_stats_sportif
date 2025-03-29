@@ -4,29 +4,29 @@ from flask import request, jsonify
 import os
 import json
 
-import data_structures as d_s
+from app import data_structures as d_s
 
 
 def create_task(data, task_type: d_s.TaskType):
-    """" Builds a Task for a statistics request (with a question) """
+    """"
+    Builds a Task for a statistics request (i.e contains a question).
+    """
     # Check if the server is shutting down
     if webserver.tasks_runner.is_shutdown.is_set():
-        jsonify( {"status" : "error", "reason" : "shutting down"} )
+        return jsonify( {"status" : "error", "reason" : "shutting down"} )
 
     # Create task and pass it to the threadpool
-    question = None
     if "question" in data:
         question = data["question"]
     else:
-        jsonify( {"status": "error", "reason": "where is your question?"} )
+        return jsonify( {"status": "error", "reason": "where is your question?"} )
 
-    state = None
-    if "state" in data:
-        state = data["state"]
+    state = data["state"] if "state" in data else None
 
-    task = d_s.Task(question, state, task_type)
+    job_id = webserver.tasks_runner.get_next_job_id_and_increment()
+    task = d_s.Task(job_id, question, state, task_type)
+    webserver.tasks_runner.enqueue_task(task)
 
-    job_id = webserver.tasks_runner.enqueue(task)
     return jsonify( {"job_id": job_id} )
 
 
@@ -64,7 +64,7 @@ def global_mean_request():
 def diff_from_mean_request():
     # Get request data
     data = request.json
-    return create_task(data, d_s.TaskType.DIFF_FROM_MIN)
+    return create_task(data, d_s.TaskType.DIFF_FROM_MEAN)
 
 @webserver.route('/api/state_diff_from_mean', methods=['POST'])
 def state_diff_from_mean_request():
@@ -98,7 +98,9 @@ def graceful_shutdown_request():
 
 @webserver.route('/api/jobs', methods=['GET'])
 def get_all_jobs_request():
-    """" Return al job_id's with their current status (running/done) """
+    """"
+    Return al job_id's, with their current status (running/done).
+    """
     response = {"status": "done", "data": []}
 
     for i in range(1, webserver.tasks_runner.job_counter):
@@ -109,27 +111,31 @@ def get_all_jobs_request():
 
 @webserver.route('/api/num_jobs', methods=['GET'])
 def get_num_jobs_request():
-    """" Return the number of jobs which are currently running """
-    running_jobs = list(filter(lambda x: x == "running", webserver.tasks_runner.jobs_status))
-    return jsonify( {"num_jobs" : len(running_jobs)})
+    """"
+    Return the number of jobs which are currently running
+    """
+    running_jobs = len(list(filter(
+            lambda status: status == "running", webserver.tasks_runner.jobs_status.values())))
+    return jsonify( {"num_jobs" : running_jobs} )
 
 
 @webserver.route('/api/get_results/<job_id>', methods=['GET'])
 def get_response(job_id):
+    job_id = int(job_id)
     status = webserver.tasks_runner.get_job_status(job_id)
     if status is None:
         return jsonify( {"status" : "error", "reason" : "Invalid job_id"} )
 
     if status == "running":
-        return jsonify( {"status" : "running"})
+        return jsonify( {"status" : "running"} )
 
-    # status == "done"
+    # Here, status == "done"
     # Load result from file
     target_file = "results/{}.json".format(job_id)
-    with open(target_file, 'r', encoding='utf-8') as res_file:
+    with open(target_file, "r", encoding="utf-8") as res_file:
         result_json = json.load(res_file)
 
-    return jsonify( {"status" : "done", "data" : result_json})
+    return jsonify( {"status" : "done", "data" : result_json} )
 
 
 # You can check localhost in your browser to see what this displays

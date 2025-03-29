@@ -25,12 +25,12 @@ class DataIngestor:
 
     def populate_database(self, csv_path: str):
         """"
-            Builds the database as a dictionary as follows:
-                {question :
-                    {state :
-                        { (strat1, strat_cat1) : [values] }
-                    }
+        Builds the database as a dictionary as follows:
+            {question :
+                {state :
+                    { (strat1, strat_cat1) : [values] }
                 }
+            }
         """
 
         # Add the questions to the database
@@ -40,7 +40,7 @@ class DataIngestor:
         for question in self.questions_best_is_max:
             self.database[question] = {}
 
-        with open(csv_path, 'r', encoding='utf-8') as csv_file:
+        with open(csv_path, "r", encoding="utf-8") as csv_file:
             csv_reader = csv.DictReader(csv_file)
 
             for line in csv_reader:
@@ -57,3 +57,30 @@ class DataIngestor:
                     self.database[question][state][strat_combo] = []
 
                 self.database[question][state][strat_combo].append(value)
+
+    def compute_states_mean(self, question):
+        pass
+
+    def compute_state_mean(self, question, state):
+        pass
+
+    def compute_best5(self, question):
+        pass
+
+    def compute_worst5(self, question):
+        pass
+
+    def compute_global_mean(self, question):
+        pass
+
+    def compute_diff_from_mean(self, question):
+        pass
+
+    def compute_state_diff_from_mean(self, question, state):
+        pass
+
+    def compute_mean_by_category(self, question):
+        pass
+
+    def compute_state_mean_by_category(self, question, state):
+        pass
