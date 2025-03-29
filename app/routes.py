@@ -4,133 +4,133 @@ from flask import request, jsonify
 import os
 import json
 
-# Example endpoint definition
-@webserver.route('/api/post_endpoint', methods=['POST'])
-def post_endpoint():
-    if request.method == 'POST':
-        # Assuming the request contains JSON data
-        data = request.json
-        print(f"got data in post {data}")
+import data_structures as d_s
 
-        # Process the received data
-        # For demonstration purposes, just echoing back the received data
-        response = {"message": "Received data successfully", "data": data}
 
-        # Sending back a JSON response
-        return jsonify(response)
+def create_task(data, task_type: d_s.TaskType):
+    """" Builds a Task for a statistics request (with a question) """
+    # Check if the server is shutting down
+    if webserver.tasks_runner.is_shutdown.is_set():
+        jsonify( {"status" : "error", "reason" : "shutting down"} )
+
+    # Create task and pass it to the threadpool
+    question = None
+    if "question" in data:
+        question = data["question"]
     else:
-        # Method Not Allowed
-        return jsonify({"error": "Method not allowed"}), 405
+        jsonify( {"status": "error", "reason": "where is your question?"} )
 
-@webserver.route('/api/get_results/<job_id>', methods=['GET'])
-def get_response(job_id):
-    print(f"JobID is {job_id}")
-    # TODO
-    # Check if job_id is valid
+    state = None
+    if "state" in data:
+        state = data["state"]
 
-    # Check if job_id is done and return the result
-    #    res = res_for(job_id)
-    #    return jsonify({
-    #        'status': 'done',
-    #        'data': res
-    #    })
+    task = d_s.Task(question, state, task_type)
 
-    # If not, return running status
-    return jsonify({'status': 'NotImplemented'})
+    job_id = webserver.tasks_runner.enqueue(task)
+    return jsonify( {"job_id": job_id} )
+
 
 @webserver.route('/api/states_mean', methods=['POST'])
 def states_mean_request():
     # Get request data
     data = request.json
-    print(f"Got request {data}")
-
-    # TODO
-    # Register job. Don't wait for task to finish
-    # Increment job_id counter
-    # Return associated job_id
-
-    return jsonify({"status": "NotImplemented"})
+    return create_task(data, d_s.TaskType.STATES_MEAN)
 
 @webserver.route('/api/state_mean', methods=['POST'])
 def state_mean_request():
-    # TODO
     # Get request data
-    # Register job. Don't wait for task to finish
-    # Increment job_id counter
-    # Return associated job_id
-
-    return jsonify({"status": "NotImplemented"})
-
+    data = request.json
+    return create_task(data, d_s.TaskType.STATE_MEAN)
 
 @webserver.route('/api/best5', methods=['POST'])
 def best5_request():
-    # TODO
     # Get request data
-    # Register job. Don't wait for task to finish
-    # Increment job_id counter
-    # Return associated job_id
-
-    return jsonify({"status": "NotImplemented"})
+    data = request.json
+    return create_task(data, d_s.TaskType.BEST5)
 
 @webserver.route('/api/worst5', methods=['POST'])
 def worst5_request():
-    # TODO
     # Get request data
-    # Register job. Don't wait for task to finish
-    # Increment job_id counter
-    # Return associated job_id
-
-    return jsonify({"status": "NotImplemented"})
+    data = request.json
+    return create_task(data, d_s.TaskType.WORST5)
 
 @webserver.route('/api/global_mean', methods=['POST'])
 def global_mean_request():
-    # TODO
     # Get request data
-    # Register job. Don't wait for task to finish
-    # Increment job_id counter
-    # Return associated job_id
-
-    return jsonify({"status": "NotImplemented"})
+    data = request.json
+    return create_task(data, d_s.TaskType.GLOBAL_MEAN)
 
 @webserver.route('/api/diff_from_mean', methods=['POST'])
 def diff_from_mean_request():
-    # TODO
     # Get request data
-    # Register job. Don't wait for task to finish
-    # Increment job_id counter
-    # Return associated job_id
-
-    return jsonify({"status": "NotImplemented"})
+    data = request.json
+    return create_task(data, d_s.TaskType.DIFF_FROM_MIN)
 
 @webserver.route('/api/state_diff_from_mean', methods=['POST'])
 def state_diff_from_mean_request():
-    # TODO
     # Get request data
-    # Register job. Don't wait for task to finish
-    # Increment job_id counter
-    # Return associated job_id
-
-    return jsonify({"status": "NotImplemented"})
+    data = request.json
+    return create_task(data, d_s.TaskType.STATE_DIFF_FROM_MEAN)
 
 @webserver.route('/api/mean_by_category', methods=['POST'])
 def mean_by_category_request():
-    # TODO
     # Get request data
-    # Register job. Don't wait for task to finish
-    # Increment job_id counter
-    # Return associated job_id
-
-    return jsonify({"status": "NotImplemented"})
+    data = request.json
+    return create_task(data, d_s.TaskType.MEAN_BY_CATEGORY)
 
 @webserver.route('/api/state_mean_by_category', methods=['POST'])
 def state_mean_by_category_request():
-    # TODO
     # Get request data
-    # Register job. Don't wait for task to finish
-    # Increment job_id counter
-    # Return associated job_id
+    data = request.json
+    return create_task(data, d_s.TaskType.STATE_MEAN_BY_CATEGORY)
 
-    return jsonify({"status": "NotImplemented"})
+@webserver.route('/api/graceful_shutdown', methods=['GET'])
+def graceful_shutdown_request():
+    # Check if there are still jobs in the queue.
+    still_processing = not webserver.tasks_runner.tasks_queue.empty()
+
+    # Notify the threadpool about the shutdown
+    webserver.tasks_runner.manage_shutdown()
+
+    if still_processing:
+        return jsonify( {"status" : "running"})
+    return jsonify( {"status" : "done"})
+
+@webserver.route('/api/jobs', methods=['GET'])
+def get_all_jobs_request():
+    """" Return al job_id's with their current status (running/done) """
+    response = {"status": "done", "data": []}
+
+    for i in range(1, webserver.tasks_runner.job_counter):
+        job_id = "job_id_{}".format(i)
+        response["data"].append( {job_id, webserver.tasks_runner.jobs_status[i]} )
+
+    return jsonify(response)
+
+@webserver.route('/api/num_jobs', methods=['GET'])
+def get_num_jobs_request():
+    """" Return the number of jobs which are currently running """
+    running_jobs = list(filter(lambda x: x == "running", webserver.tasks_runner.jobs_status))
+    return jsonify( {"num_jobs" : len(running_jobs)})
+
+
+@webserver.route('/api/get_results/<job_id>', methods=['GET'])
+def get_response(job_id):
+    status = webserver.tasks_runner.get_job_status(job_id)
+    if status is None:
+        return jsonify( {"status" : "error", "reason" : "Invalid job_id"} )
+
+    if status == "running":
+        return jsonify( {"status" : "running"})
+
+    # status == "done"
+    # Load result from file
+    target_file = "results/{}.json".format(job_id)
+    with open(target_file, 'r', encoding='utf-8') as res_file:
+        result_json = json.load(res_file)
+
+    return jsonify( {"status" : "done", "data" : result_json})
+
 
 # You can check localhost in your browser to see what this displays
 @webserver.route('/')
