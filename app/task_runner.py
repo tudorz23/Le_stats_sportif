@@ -122,26 +122,27 @@ class TaskRunner(Thread):
         """"
         Computes the results for the task, using methods from data_ingestor.
         """
-        # if task.task_type == d_s.TaskType.STATES_MEAN:
-        #     result = self.data_ingestor.compute_states_mean(task.question)
-        # elif task.task_type == d_s.TaskType.STATE_MEAN:
-        #     result = self.data_ingestor.compute_state_mean(task.question, task.state)
-        # elif task.task_type == d_s.TaskType.BEST5:
-        #     result = self.data_ingestor.compute_best5(task.question)
-        # elif task.task_type == d_s.TaskType.WORST5:
-        #     result = self.data_ingestor.compute_WORST5(task.question)
-        # elif task.task_type == d_s.TaskType.GLOBAL_MEAN:
-        #     result = self.data_ingestor.compute_global_mean(task.question)
-        # elif task.task_type == d_s.TaskType.DIFF_FROM_MEAN:
-        #     result = self.data_ingestor.compute_diff_from_mean(task.question)
-        # elif task.task_type == d_s.TaskType.STATE_DIFF_FROM_MEAN:
-        #     result = self.data_ingestor.compute_state_diff_from_mean(task.question, task.state)
-        # elif task.task_type == d_s.TaskType.MEAN_BY_CATEGORY:
-        #     result = self.data_ingestor.compute_mean_by_category(task.question)
-        # elif task.task_type == d_s.TaskType.STATE_MEAN_BY_CATEGORY:
-        #     result = self.data_ingestor.compute_state_mean_by_category(task.question, task.state)
+        result = {"Hello": "running"}
+
+        if task.task_type == d_s.TaskType.STATES_MEAN:
+            result = self.data_ingestor.compute_states_mean(task.question)
+        elif task.task_type == d_s.TaskType.STATE_MEAN:
+            result = self.data_ingestor.compute_state_mean(task.question, task.state)
+        elif task.task_type == d_s.TaskType.BEST5:
+            result = self.data_ingestor.compute_best5(task.question)
+        elif task.task_type == d_s.TaskType.WORST5:
+            result = self.data_ingestor.compute_worst5(task.question)
+        elif task.task_type == d_s.TaskType.GLOBAL_MEAN:
+            result = self.data_ingestor.compute_global_mean(task.question)
+        elif task.task_type == d_s.TaskType.DIFF_FROM_MEAN:
+            result = self.data_ingestor.compute_diff_from_mean(task.question)
+        elif task.task_type == d_s.TaskType.STATE_DIFF_FROM_MEAN:
+            result = self.data_ingestor.compute_state_diff_from_mean(task.question, task.state)
+        elif task.task_type == d_s.TaskType.MEAN_BY_CATEGORY:
+            result = self.data_ingestor.compute_mean_by_category(task.question)
+        elif task.task_type == d_s.TaskType.STATE_MEAN_BY_CATEGORY:
+            result = self.data_ingestor.compute_state_mean_by_category(task.question, task.state)
         # else:
         #     result = {"error" : "What are you even doing?"}
 
-        result = {"Hello" : "running"}
         return result
