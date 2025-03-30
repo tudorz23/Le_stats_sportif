@@ -122,8 +122,6 @@ class TaskRunner(Thread):
         """"
         Computes the results for the task, using methods from data_ingestor.
         """
-        result = {"Hello": "running"}
-
         if task.task_type == d_s.TaskType.STATES_MEAN:
             result = self.data_ingestor.compute_states_mean(task.question)
         elif task.task_type == d_s.TaskType.STATE_MEAN:
@@ -142,7 +140,7 @@ class TaskRunner(Thread):
             result = self.data_ingestor.compute_mean_by_category(task.question)
         elif task.task_type == d_s.TaskType.STATE_MEAN_BY_CATEGORY:
             result = self.data_ingestor.compute_state_mean_by_category(task.question, task.state)
-        # else:
-        #     result = {"error" : "What are you even doing?"}
+        else:
+            result = {"error" : "What are you even doing?"}
 
         return result

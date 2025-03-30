@@ -187,6 +187,10 @@ class DataIngestor:
 
         for state in self.database[question].keys():
             for strat_combo, values in self.database[question][state].items():
+                # Discard empty stratification
+                if strat_combo[0] == "" and strat_combo[1] == "":
+                    continue
+
                 strat_name = "('{}', '{}', '{}')".format(state, strat_combo[1], strat_combo[0])
                 mean_by_cat_dict[strat_name] = np.average(values)
 
