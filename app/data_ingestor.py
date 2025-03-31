@@ -1,9 +1,15 @@
-import os
-import json
+"""
+Module that manages the dataset used by the server for statistics and the
+various operations applied on it.
+"""
+
 import csv
 import numpy as np
 
 class DataIngestor:
+    """
+    Data manager.
+    """
     def __init__(self, csv_path: str):
         self.database = {}
 
@@ -24,8 +30,9 @@ class DataIngestor:
 
         self.populate_database(csv_path)
 
+
     def populate_database(self, csv_path: str):
-        """"
+        """
         Builds the database as a dictionary as follows:
             {question :
                 {state :
@@ -106,7 +113,7 @@ class DataIngestor:
 
 
     def compute_states_mean(self, question):
-        """"
+        """
         Computes the mean of values of each state, regarding given question,
         and sorts ascending by mean.
         """
@@ -116,7 +123,7 @@ class DataIngestor:
 
 
     def compute_state_mean(self, question, state):
-        """"
+        """
         Computes the mean of values of requested state, regarding given question.
         """
         state_mean = self.helper_state_mean(question, state)
@@ -124,7 +131,7 @@ class DataIngestor:
 
 
     def compute_best5(self, question):
-        """"
+        """
         Computes the mean of values of each state, regarding given question,
         and returns the best 5, according to the question type.
         """
@@ -135,7 +142,7 @@ class DataIngestor:
 
 
     def compute_worst5(self, question):
-        """"
+        """
         Computes the mean of values of each state, regarding given question,
         and returns the worst 5, according to the question type.
         """
@@ -155,7 +162,7 @@ class DataIngestor:
 
 
     def compute_diff_from_mean(self, question):
-        """"
+        """
         Computes the diff between global mean and each state mean.
         """
         global_mean = self.helper_global_mean(question)
@@ -169,7 +176,7 @@ class DataIngestor:
 
 
     def compute_state_diff_from_mean(self, question, state):
-        """"
+        """
         Computes the diff between global mean and given state mean.
         """
         global_mean = self.helper_global_mean(question)
@@ -191,7 +198,7 @@ class DataIngestor:
                 if strat_combo[0] == "" and strat_combo[1] == "":
                     continue
 
-                strat_name = "('{}', '{}', '{}')".format(state, strat_combo[1], strat_combo[0])
+                strat_name = f"('{state}', '{strat_combo[1]}', '{strat_combo[0]}')"
                 mean_by_cat_dict[strat_name] = np.average(values)
 
         return mean_by_cat_dict
@@ -204,7 +211,7 @@ class DataIngestor:
         state_mean_by_cat_dict = {state: {}}
 
         for strat_combo, values in self.database[question][state].items():
-            strat_name = "('{}', '{}')".format(strat_combo[1], strat_combo[0])
+            strat_name = f"('{strat_combo[1]}', '{strat_combo[0]}')"
             state_mean_by_cat_dict[state][strat_name] = np.average(values)
 
         return state_mean_by_cat_dict

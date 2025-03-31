@@ -1,11 +1,17 @@
+"""
+Module that manages the ThreadPool and its Workers.
+"""
+
 import json
 from queue import Queue
 from threading import Thread, Event, Lock
-import time
 import os
 from app import data_structures as d_s
 
 class ThreadPool:
+    """
+    Adds jobs to the queue and controls the start and the shutdown.
+    """
     def __init__(self, data_ingestor):
         self.d_ing = data_ingestor
         self.job_counter = 1
@@ -33,7 +39,7 @@ class ThreadPool:
 
     @staticmethod
     def get_nr_workers():
-        """"
+        """
         Computes the number of workers to be started.
         """
         nr_workers = os.getenv("TP_NUM_OF_THREADS")
@@ -44,7 +50,7 @@ class ThreadPool:
 
 
     def get_next_job_id_and_increment(self):
-        """"
+        """
         Returns the id of the next job (i.e. job_counter) and increments the job_counter.
         """
         with self.counter_lock:
@@ -54,7 +60,7 @@ class ThreadPool:
 
 
     def enqueue_task(self, task: d_s.Task):
-        """"
+        """
         Adds a task to the queue.
         """
         self.jobs_status[task.task_id] = "running"
@@ -62,7 +68,7 @@ class ThreadPool:
 
 
     def get_job_status(self, job_id):
-        """"
+        """
         Checks if the job is valid. Returns None if invalid, status if valid.
         """
         ok = True
@@ -74,7 +80,7 @@ class ThreadPool:
 
 
     def manage_shutdown(self):
-        """"
+        """
         Announces the workers to shut down.
         """
         self.is_shutdown.set()
@@ -90,6 +96,9 @@ class ThreadPool:
 
 
 class TaskRunner(Thread):
+    """
+    Gets jobs from the queue and executes them until it receives a shutdown job.
+    """
     def __init__(self, tasks_queue, data_ingestor, jobs_status):
         super().__init__()
         self.tasks_queue = tasks_queue
@@ -98,7 +107,7 @@ class TaskRunner(Thread):
 
 
     def run(self):
-        """"
+        """
         Infinite loop to get tasks from the queue and execute them. Stops at SHUTDOWN.
         """
         while True:
@@ -111,7 +120,7 @@ class TaskRunner(Thread):
             result = self.execute_task(task)
 
             # Write the result on the disk
-            target_file = "results/{}.json".format(task.task_id)
+            target_file = f"results/{task.task_id}.json"
             with open(target_file, "w", encoding="utf-8") as json_file:
                 json.dump(result, json_file)
 
@@ -119,7 +128,7 @@ class TaskRunner(Thread):
 
 
     def execute_task(self, task: d_s.Task):
-        """"
+        """
         Computes the results for the task, using methods from data_ingestor.
         """
         if task.task_type == d_s.TaskType.STATES_MEAN:
