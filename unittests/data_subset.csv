@@ -1,0 +1,20 @@
+,LocationDesc,Question,Data_Value,StratificationCategory1,Stratification1
+0,Alaska,Percent of adults aged 18 years and older who have obesity,23.3,Race/Ethnicity,2 or more races
+1,Nevada,Percent of adults aged 18 years and older who have obesity,34.6,Income,"$25,000 - $34,999"
+2,Missouri,Percent of adults aged 18 years and older who have obesity,34.5,Income,"$75,000 or greater"
+3,Missouri,Percent of adults aged 18 years and older who have obesity,39.6,Race/Ethnicity,Hispanic
+4,Missouri,Percent of adults aged 18 years and older who have obesity,34,Race/Ethnicity,Non-Hispanic White
+5,Missouri,Percent of adults aged 18 years and older who have obesity,36.4,Income,"$25,000 - $34,999"
+6,Missouri,Percent of adults aged 18 years and older who have obesity,35,Education,Less than high school
+7,Missouri,Percent of adults aged 18 years and older who have obesity,10.8,Race/Ethnicity,Asian
+8,Missouri,Percent of adults aged 18 years and older who have obesity,28.2,Education,College graduate
+9,Missouri,Percent of adults aged 18 years and older who have obesity,35.4,Income,"$50,000 - $74,999"
+10,Missouri,Percent of adults aged 18 years and older who have obesity,40.4,Income,"$25,000 - $34,999"
+11,Mississippi,Percent of adults aged 18 years and older who have obesity,42.4,Income,"$15,000 - $24,999"
+12,Mississippi,Percent of adults aged 18 years and older who have obesity,49,Age (years),45 - 54
+13,Mississippi,Percent of adults aged 18 years and older who have obesity,35.5,Income,"$75,000 or greater"
+14,Texas,Percent of adults aged 18 years and older who have obesity,36.3,Race/Ethnicity,Non-Hispanic Black
+15,Oregon,Percent of adults aged 18 years and older who have obesity,32.4,Income,"$50,000 - $74,999"
+16,Florida,Percent of adults who report consuming vegetables less than one time daily,23.3,Sex,Male
+17,Florida,Percent of adults who report consuming fruit less than one time daily,26.7,Income,"$15,000 - $24,999"
+18,Florida,Percent of adults who engage in no leisure-time physical activity,32.1,Sex,Female

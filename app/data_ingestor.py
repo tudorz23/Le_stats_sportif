@@ -76,7 +76,7 @@ class DataIngestor:
         for values in self.database[question][state].values():
             state_values.extend(values)
 
-        return np.average(state_values)
+        return float(np.average(state_values))
 
 
     def helper_states_mean(self, question):
@@ -93,7 +93,7 @@ class DataIngestor:
             for vals in details.values():
                 state_wide_values.extend(vals)
 
-            states_mean_dict[state] = np.average(state_wide_values)
+            states_mean_dict[state] = float(np.average(state_wide_values))
 
         return states_mean_dict
 
@@ -109,7 +109,7 @@ class DataIngestor:
             for vals in details.values():
                 global_values.extend(vals)
 
-        return np.average(global_values)
+        return float(np.average(global_values))
 
 
     def compute_states_mean(self, question):
@@ -199,7 +199,7 @@ class DataIngestor:
                     continue
 
                 strat_name = f"('{state}', '{strat_combo[1]}', '{strat_combo[0]}')"
-                mean_by_cat_dict[strat_name] = np.average(values)
+                mean_by_cat_dict[strat_name] = float(np.average(values))
 
         return mean_by_cat_dict
 
@@ -212,6 +212,6 @@ class DataIngestor:
 
         for strat_combo, values in self.database[question][state].items():
             strat_name = f"('{strat_combo[1]}', '{strat_combo[0]}')"
-            state_mean_by_cat_dict[state][strat_name] = np.average(values)
+            state_mean_by_cat_dict[state][strat_name] = float(np.average(values))
 
         return state_mean_by_cat_dict
