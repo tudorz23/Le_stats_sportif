@@ -37,6 +37,7 @@ webserver.logger = logging.getLogger('webserver_logger')
 webserver.logger.setLevel(DEBUG)
 webserver.logger.addHandler(handler)
 
+# Initialize ThreadPool
 webserver.tasks_runner = ThreadPool(webserver.data_ingestor)
 
 webserver.logger.info("Server is on, here we go!\n")

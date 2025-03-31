@@ -196,3 +196,31 @@ def get_response(job_id):
         result_json = json.load(res_file)
 
     return jsonify( {"status" : "done", "data" : result_json} )
+
+# You can check localhost in your browser to see what this displays
+@webserver.route('/')
+@webserver.route('/index')
+def index():
+    """
+    Route for the main page of the website.
+    """
+    routes = get_defined_routes()
+    msg = "Hello, World!\n Interact with the webserver using one of the defined routes:\n"
+
+    # Display each route as a separate HTML <p> tag
+    paragraphs = ""
+    for route in routes:
+        paragraphs += f"<p>{route}</p>"
+
+    msg += paragraphs
+    return msg
+
+def get_defined_routes():
+    """
+    Helper to get all the available routes from the website.
+    """
+    routes = []
+    for rule in webserver.url_map.iter_rules():
+        methods = ', '.join(rule.methods)
+        routes.append(f"Endpoint: \"{rule}\" Methods: \"{methods}\"")
+    return routes

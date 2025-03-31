@@ -1,0 +1,180 @@
+2025-03-31 18:09:30,204 - INFO - Received /api/global_mean request.
+2025-03-31 18:09:30,205 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,208 - INFO - Received /api/global_mean request.
+2025-03-31 18:09:30,208 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,212 - INFO - Received /api/global_mean request.
+2025-03-31 18:09:30,212 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,216 - INFO - Received /api/mean_by_category request.
+2025-03-31 18:09:30,216 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,220 - INFO - Received /api/mean_by_category request.
+2025-03-31 18:09:30,220 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,224 - INFO - Received /api/mean_by_category request.
+2025-03-31 18:09:30,224 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,228 - INFO - Received /api/mean_by_category request.
+2025-03-31 18:09:30,228 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,233 - INFO - Received /api/mean_by_category request.
+2025-03-31 18:09:30,233 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,236 - INFO - Received /api/mean_by_category request.
+2025-03-31 18:09:30,236 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,240 - INFO - Received /api/mean_by_category request.
+2025-03-31 18:09:30,240 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,242 - INFO - Received /api/mean_by_category request.
+2025-03-31 18:09:30,242 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,247 - INFO - Received /api/mean_by_category request.
+2025-03-31 18:09:30,247 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,251 - INFO - Received /api/state_diff_from_mean request.
+2025-03-31 18:09:30,251 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,254 - INFO - Received /api/state_diff_from_mean request.
+2025-03-31 18:09:30,254 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,256 - INFO - Received /api/state_diff_from_mean request.
+2025-03-31 18:09:30,256 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,259 - INFO - Received /api/state_diff_from_mean request.
+2025-03-31 18:09:30,259 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,261 - INFO - Received /api/state_diff_from_mean request.
+2025-03-31 18:09:30,261 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,265 - INFO - Received /api/state_diff_from_mean request.
+2025-03-31 18:09:30,265 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,268 - INFO - Received /api/state_diff_from_mean request.
+2025-03-31 18:09:30,268 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,271 - INFO - Received /api/state_diff_from_mean request.
+2025-03-31 18:09:30,271 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,273 - INFO - Received /api/state_diff_from_mean request.
+2025-03-31 18:09:30,273 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,276 - INFO - Received /api/state_diff_from_mean request.
+2025-03-31 18:09:30,277 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,279 - INFO - Received /api/state_diff_from_mean request.
+2025-03-31 18:09:30,279 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,283 - INFO - Received /api/state_diff_from_mean request.
+2025-03-31 18:09:30,283 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,287 - INFO - Received /api/state_diff_from_mean request.
+2025-03-31 18:09:30,287 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,290 - INFO - Received /api/state_diff_from_mean request.
+2025-03-31 18:09:30,290 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,292 - INFO - Received /api/state_diff_from_mean request.
+2025-03-31 18:09:30,293 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,295 - INFO - Received /api/state_diff_from_mean request.
+2025-03-31 18:09:30,295 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,297 - INFO - Received /api/state_diff_from_mean request.
+2025-03-31 18:09:30,298 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,301 - INFO - Received /api/state_diff_from_mean request.
+2025-03-31 18:09:30,301 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,305 - INFO - Received /api/state_diff_from_mean request.
+2025-03-31 18:09:30,305 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,307 - INFO - Received /api/state_diff_from_mean request.
+2025-03-31 18:09:30,307 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,310 - INFO - Received /api/state_mean request.
+2025-03-31 18:09:30,310 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,313 - INFO - Received /api/state_mean request.
+2025-03-31 18:09:30,313 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,315 - INFO - Received /api/state_mean request.
+2025-03-31 18:09:30,315 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,319 - INFO - Received /api/state_mean request.
+2025-03-31 18:09:30,319 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,323 - INFO - Received /api/state_mean request.
+2025-03-31 18:09:30,323 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,325 - INFO - Received /api/state_mean request.
+2025-03-31 18:09:30,325 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,328 - INFO - Received /api/state_mean request.
+2025-03-31 18:09:30,328 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,330 - INFO - Received /api/state_mean request.
+2025-03-31 18:09:30,330 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,332 - INFO - Received /api/state_mean request.
+2025-03-31 18:09:30,333 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,336 - INFO - Received /api/state_mean request.
+2025-03-31 18:09:30,336 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,340 - INFO - Received /api/state_mean request.
+2025-03-31 18:09:30,340 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,343 - INFO - Received /api/state_mean request.
+2025-03-31 18:09:30,343 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,345 - INFO - Received /api/state_mean request.
+2025-03-31 18:09:30,345 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,348 - INFO - Received /api/state_mean request.
+2025-03-31 18:09:30,348 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,350 - INFO - Received /api/state_mean request.
+2025-03-31 18:09:30,350 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,353 - INFO - Received /api/state_mean request.
+2025-03-31 18:09:30,353 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,357 - INFO - Received /api/state_mean request.
+2025-03-31 18:09:30,358 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,361 - INFO - Received /api/state_mean request.
+2025-03-31 18:09:30,361 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,364 - INFO - Received /api/state_mean request.
+2025-03-31 18:09:30,364 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,366 - INFO - Received /api/state_mean request.
+2025-03-31 18:09:30,366 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,369 - INFO - Received /api/state_mean_by_category request.
+2025-03-31 18:09:30,369 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,372 - INFO - Received /api/state_mean_by_category request.
+2025-03-31 18:09:30,372 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,376 - INFO - Received /api/state_mean_by_category request.
+2025-03-31 18:09:30,376 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,379 - INFO - Received /api/state_mean_by_category request.
+2025-03-31 18:09:30,379 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,381 - INFO - Received /api/state_mean_by_category request.
+2025-03-31 18:09:30,381 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,384 - INFO - Received /api/state_mean_by_category request.
+2025-03-31 18:09:30,384 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,386 - INFO - Received /api/state_mean_by_category request.
+2025-03-31 18:09:30,386 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,389 - INFO - Received /api/state_mean_by_category request.
+2025-03-31 18:09:30,389 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,392 - INFO - Received /api/state_mean_by_category request.
+2025-03-31 18:09:30,393 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,396 - INFO - Received /api/state_mean_by_category request.
+2025-03-31 18:09:30,396 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,399 - INFO - Received /api/state_mean_by_category request.
+2025-03-31 18:09:30,399 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,402 - INFO - Received /api/state_mean_by_category request.
+2025-03-31 18:09:30,402 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,404 - INFO - Received /api/state_mean_by_category request.
+2025-03-31 18:09:30,404 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,407 - INFO - Received /api/state_mean_by_category request.
+2025-03-31 18:09:30,407 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,411 - INFO - Received /api/state_mean_by_category request.
+2025-03-31 18:09:30,411 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,415 - INFO - Received /api/state_mean_by_category request.
+2025-03-31 18:09:30,415 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,417 - INFO - Received /api/state_mean_by_category request.
+2025-03-31 18:09:30,417 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,420 - INFO - Received /api/state_mean_by_category request.
+2025-03-31 18:09:30,420 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,422 - INFO - Received /api/state_mean_by_category request.
+2025-03-31 18:09:30,422 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,425 - INFO - Received /api/state_mean_by_category request.
+2025-03-31 18:09:30,425 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,429 - INFO - Received /api/states_mean request.
+2025-03-31 18:09:30,429 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,433 - INFO - Received /api/states_mean request.
+2025-03-31 18:09:30,433 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,435 - INFO - Received /api/states_mean request.
+2025-03-31 18:09:30,435 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,437 - INFO - Received /api/states_mean request.
+2025-03-31 18:09:30,438 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,440 - INFO - Received /api/states_mean request.
+2025-03-31 18:09:30,440 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,442 - INFO - Received /api/states_mean request.
+2025-03-31 18:09:30,442 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,445 - INFO - Received /api/states_mean request.
+2025-03-31 18:09:30,446 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,450 - INFO - Received /api/states_mean request.
+2025-03-31 18:09:30,450 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,452 - INFO - Received /api/states_mean request.
+2025-03-31 18:09:30,453 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,455 - INFO - Received /api/worst5 request.
+2025-03-31 18:09:30,455 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,457 - INFO - Received /api/worst5 request.
+2025-03-31 18:09:30,457 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,460 - INFO - Received /api/worst5 request.
+2025-03-31 18:09:30,460 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,464 - INFO - Received /api/worst5 request.
+2025-03-31 18:09:30,464 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,469 - INFO - Received /api/worst5 request.
+2025-03-31 18:09:30,469 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,473 - INFO - Received /api/worst5 request.
+2025-03-31 18:09:30,473 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,476 - INFO - Received /api/worst5 request.
+2025-03-31 18:09:30,476 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,478 - INFO - Received /api/worst5 request.
+2025-03-31 18:09:30,478 - ERROR - Cannot create new tasks, server is shutting down!
+2025-03-31 18:09:30,482 - INFO - Received /api/worst5 request.
+2025-03-31 18:09:30,482 - ERROR - Cannot create new tasks, server is shutting down!
