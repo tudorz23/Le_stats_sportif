@@ -33,7 +33,7 @@ format to communicate with the clients.
     * `data_ingestor.py` for the data managing class, `DataIngestor`
     * `routes.py` for the web routes and the actions for each
     * `task_runner.py` for the `ThreadPool` and the `Workers`
-    * `data_structures.py` for useful data structures used in the implementation
+    * `data_structures.py` for useful data structures
 * The `unittests` module contains a testing class for validating the calculations
 executed by the methods of the `DataIngestor` class.
 
@@ -70,9 +70,13 @@ question, then by the state, and finally, for each tuple of stratifications, the
 values registered for them.
 * The `ThreadPool` uses a `queue.Queue()` for the tasks queue, which is synchronized,
 so all the threads can call `put()` and `get()` on it with no race condition.
+* The `csv` parsing is done by inserting a `CSV_PARSE` task in the queue during the
+initialization of the `ThreadPool`. Thus, it is certain that no other task was
+inserted before it. One `worker` will extract that task and will call the
+`populate_database()` method of the ingestor. The other workers wait at an event
+variable (to make sure the whole file was parsed) until the csv worker notifies them.
 * To know when the `shutdown` request was received in order to stop adding new tasks,
-an `Event` variable is used (could have also been done just as well using a boolean
-and a `Lock`).
+an `Event` variable is also used.
 * As it is unclear if multiple requests can be processed in parallel (i.e. if Flask
 somehow creates multiple threads under the hood to handle simultaneous requests), a
 `Lock` variable is used to safeguard the `job_counter` (which might be the subject of
@@ -82,13 +86,13 @@ encapsulates the details regarding a job. The workers identify what kind of task
 by the `TaskType` enum attribute. This is also how the ThreadPool announces them when
 it is time to shut down: it enqueues `nr_workers` jobs of `SHUTDOWN` type. When a
 worker decodes such a job, it immediately halts its execution. Thus, it is certain that
-every worker will eventually extract such a job from the queue.
+each worker will eventually extract exactly one such job from the queue.
 
 ---
 
 ## Logging
-* A logging mechanism is used for writing to a file the important events taking place
-with the server.
+* A logging mechanism is used for writing the important events taking place with the
+server to a file.
 * The `logger` module is used, alongside a `RotatingFileHandler` for efficiently storing
 the logs and a `Formatter` to print the time in `GMT` standard.
 
