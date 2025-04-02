@@ -8,6 +8,7 @@ from deepdiff import DeepDiff
 class TestWebserver(unittest.TestCase):
     def setUp(self):
         self.data_ingestor = DataIngestor('unittests/data_subset.csv')
+        self.data_ingestor.populate_database()
         self.question = "Percent of adults aged 18 years and older who have obesity"
 
 
