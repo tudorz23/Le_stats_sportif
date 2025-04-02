@@ -17,9 +17,6 @@ if not os.path.exists('results'):
 # Create server
 webserver = Flask(__name__)
 
-# Initialize data ingestor
-webserver.data_ingestor = DataIngestor("./nutrition_activity_obesity_usa_subset.csv")
-
 # Initialize logging stuff: logger gets a handler, who gets a formatter
 
 # Set formatter
@@ -36,6 +33,9 @@ handler.setFormatter(formatter)
 webserver.logger = logging.getLogger('webserver_logger')
 webserver.logger.setLevel(DEBUG)
 webserver.logger.addHandler(handler)
+
+# Initialize data ingestor
+webserver.data_ingestor = DataIngestor("./nutrition_activity_obesity_usa_subset.csv")
 
 # Initialize ThreadPool
 webserver.tasks_runner = ThreadPool(webserver.data_ingestor)

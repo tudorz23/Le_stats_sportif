@@ -18,6 +18,7 @@ class TaskType(Enum):
     MEAN_BY_CATEGORY = auto()
     STATE_MEAN_BY_CATEGORY = auto()
     SHUTDOWN = auto()
+    CSV_PARSE = auto()
 
 
 class Task:

@@ -13,7 +13,7 @@ class ThreadPool:
     Adds jobs to the queue and controls the start and the shutdown.
     """
     def __init__(self, data_ingestor):
-        self.d_ing = data_ingestor
+        self.data_ing = data_ingestor
         self.job_counter = 1
 
         # Status of a job: running/done
@@ -25,16 +25,22 @@ class ThreadPool:
         # Event to know when the server received graceful_shutdown
         self.is_shutdown = Event()
 
+        # Event to know when the parsing of the csv of the ingestor is finished
+        self.csv_ready = Event()
+
         # Lock for accessing the job_counter.
         self.counter_lock = Lock()
 
         self.nr_workers = ThreadPool.get_nr_workers()
-        self.workers = [TaskRunner(self.tasks_queue, self.d_ing, self.jobs_status)
-                        for _ in range(self.nr_workers)]
+        self.workers = [TaskRunner(self.tasks_queue, self.data_ing, self.jobs_status,
+                                   self.csv_ready) for _ in range(self.nr_workers)]
 
         # Start the threads
         for worker in self.workers:
             worker.start()
+
+        # Enqueue a task for csv file parsing (before receiving any web request task!)
+        self.tasks_queue.put(d_s.Task(task_type=d_s.TaskType.CSV_PARSE))
 
 
     @staticmethod
@@ -99,11 +105,12 @@ class TaskRunner(Thread):
     """
     Gets jobs from the queue and executes them until it receives a shutdown job.
     """
-    def __init__(self, tasks_queue, data_ingestor, jobs_status):
+    def __init__(self, tasks_queue, data_ingestor, jobs_status, csv_ready: Event):
         super().__init__()
         self.tasks_queue = tasks_queue
         self.data_ingestor = data_ingestor
         self.jobs_status = jobs_status
+        self.csv_ready = csv_ready
 
 
     def run(self):
@@ -114,8 +121,18 @@ class TaskRunner(Thread):
             # Blocking get() call
             task: d_s.Task = self.tasks_queue.get()
 
+            # If it is shutdown, halt execution immediately
             if task.task_type == d_s.TaskType.SHUTDOWN:
                 return
+
+            # If it is csv_parse, do it and notify everyone else
+            if task.task_type == d_s.TaskType.CSV_PARSE:
+                self.data_ingestor.populate_database()
+                self.csv_ready.set()
+                continue
+
+            # Wait until the csv parsing is complete
+            self.csv_ready.wait()
 
             result = self.execute_task(task)
 
