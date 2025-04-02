@@ -136,7 +136,7 @@ def graceful_shutdown_request():
     # Notify the threadpool about the shutdown
     webserver.tasks_runner.manage_shutdown()
 
-    webserver.logger.info("==== Webserver is shutting down ====")
+    webserver.logger.info("====== Webserver is shutting down! ======")
 
     if still_processing:
         return jsonify( {"status" : "running"})
@@ -151,7 +151,10 @@ def get_all_jobs_request():
 
     response = {"status": "done", "data": []}
 
-    for i in range(1, webserver.tasks_runner.job_counter):
+    with webserver.tasks_runner.counter_lock:
+        curr_job_counter = webserver.tasks_runner.job_counter
+
+    for i in range(1, curr_job_counter):
         job_id = f"job_id_{i}"
         response["data"].append( {job_id: webserver.tasks_runner.jobs_status[i]} )
 

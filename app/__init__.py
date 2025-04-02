@@ -40,6 +40,6 @@ webserver.data_ingestor = DataIngestor("./nutrition_activity_obesity_usa_subset.
 # Initialize ThreadPool
 webserver.tasks_runner = ThreadPool(webserver.data_ingestor)
 
-webserver.logger.info("Server is on, here we go!\n")
+webserver.logger.info("====== Server is on, here we go! ======\n")
 
 from app import routes
